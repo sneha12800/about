@@ -1,17 +1,23 @@
 :root {
-    --primary: #E94E55; /* Admissions Red */
-    --primary-dark: #cc3d43;
-    --secondary: #2D1E16; /* Deep Brown */
-    --accent: #E5AA3E; /* Gold/Yellow from Academic Page */
-    --text-dark: #2D1E16;
-    --text-light: #665c58;
+    --primary: #253991; /* Tekkzy Royal Blue */
+    --primary-dark: #1A286B;
+    --secondary: #121212; /* Charcoal */
+    --accent: #FBBC05; /* Vibrant Yellow */
+    --accent-soft: rgba(251, 188, 5, 0.15);
+    --text-dark: #1A1A1A;
+    --text-light: #4B5563;
     --white: #ffffff;
-    --bg-light: #FCF8F5; /* Soft Cream */
-    --footer-bg: #2D1E16;
-    --footer-text: #FDF8F4;
+    --bg-light: #F9FAFB; 
+    --bg-cream: #FDF8EE; /* Warm Cream from reference */
+    --footer-bg: #121212;
+    --footer-text: #F3F4F6;
     --font-main: 'Outfit', sans-serif;
     --font-serif: 'Playfair Display', serif;
     --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius: 1rem;
 }
 
 * {
@@ -47,7 +53,62 @@ section {
     margin-bottom: 1.5rem;
 }
 
-.serif-title.white { color: var(--white); }
+/* New Decorative Heading Style */
+.serif-heading-vibrant {
+    position: relative;
+    display: inline-block;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.section-header.center .serif-heading-vibrant::before {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.serif-heading-vibrant::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+}
+
+.serif-heading-vibrant .highlight-box {
+    position: relative;
+    z-index: 1;
+    padding: 0 0.5rem;
+}
+
+.serif-heading-vibrant .highlight-box::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 10%;
+    width: 100%;
+    height: 50%;
+    background: var(--accent-soft); 
+    z-index: -1;
+}
+
+.serif-heading-vibrant .accent-italic {
+    font-style: italic;
+    color: var(--primary);
+}
+
+.serif-title.white,
+.serif-heading-vibrant.white { 
+    color: var(--white); 
+}
+
+.serif-heading-vibrant.white .accent-italic {
+    color: var(--accent); /* More visible gold on dark backgrounds */
+}
 .italic { font-style: italic; }
 
 .subtitle {
@@ -64,14 +125,14 @@ section {
 
 /* Navbar */
 .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     padding: 1.2rem 4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+    z-index: 1001;
     background: var(--white);
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
@@ -123,15 +184,68 @@ section {
     font-weight: 700;
 }
 
-.cta-nav:hover {
-    background: var(--accent-dark);
-    transform: translateY(-2px);
+/* Sub-Nav */
+.sub-nav {
+    position: sticky;
+    top: 70px; /* Adjusting for main navbar height */
+    width: 100%;
+    background: var(--white);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    z-index: 1000;
+    padding: 0.5rem 0;
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+}
+
+.sub-nav.sticky {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.sub-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 3rem;
+}
+
+.sub-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.sub-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: var(--transition);
+}
+
+.sub-links a:hover::after, .sub-links a.active::after {
+    width: 100%;
+}
+
+.sub-links a:hover, .sub-links a.active {
+    color: var(--primary);
 }
 
 /* Hero */
 .hero {
     height: 100vh;
-    background: url('https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?auto=format&fit=crop&q=80&w=2000') center/cover;
+    background: url('hero_vibrant_campus_sunset_premium_1774683689660.png') center/cover;
     display: flex;
     align-items: center;
     padding: 0 4rem;
@@ -257,7 +371,8 @@ section {
 
 /* Stats Section */
 .stats-section {
-    background: var(--secondary);
+    background: #0f172a; /* Matching footer dark shade */
+    padding: 100px 0;
 }
 
 .section-header.center {
@@ -416,10 +531,47 @@ section {
 .text-center { text-align: center; }
 .mt-4 { margin-top: 4rem; }
 .btn.small { padding: 0.7rem 1.5rem; font-size: 0.8rem; }
+.compliance-section {
+    position: relative;
+    background: url('compliance_bg_texture_1774685097160.png') center/cover no-repeat;
+    overflow: hidden;
+}
+
+.compliance-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.92); /* Soft white overlay */
+    z-index: 1;
+}
+
+.compliance-section .container {
+    position: relative;
+    z-index: 2;
+}
+
 .footer {
     padding: 6rem 0 2rem;
-    background: var(--footer-bg);
+    background: #150050; /* Rich, dark, saturated indigo */
     color: var(--footer-text);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: url('https://admissions-tat-tekkzy.netlify.app/logo.png') center/contain no-repeat;
+    opacity: 0.03;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 .footer-grid {
@@ -496,7 +648,477 @@ section {
 
 .social-links a:hover { opacity: 1; color: var(--primary); }
 
+/* Campus Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: 400px;
+    box-shadow: var(--shadow-md);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: var(--white);
+}
+
+/* Departments */
+.dept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.dept-card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.dept-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.dept-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+/* Testimonials */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.testimonial-card {
+    background: var(--bg-light);
+    padding: 3rem;
+    border-radius: var(--radius);
+    position: relative;
+    padding-top: 1.5rem;
+}
+
+.serif-heading-vibrant::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+}
+
+.center.serif-heading-vibrant::before {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    font-size: 5rem;
+    color: var(--primary);
+    opacity: 0.1;
+    font-family: var(--font-serif);
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.student-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.student-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Vision Section */
+.vision-section {
+    background: linear-gradient(135deg, #ffffff 0%, var(--bg-cream) 100%);
+}
+
+.vision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.vision-box {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    border-left: 5px solid var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.vision-box h3 {
+    font-family: var(--font-serif);
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.vision-box ul {
+    padding-left: 1.2rem;
+}
+
+.vision-box ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Values New */
+.values-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.value-item-new {
+    background: #f0f2f5;
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius);
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.value-item-new:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(220, 38, 38, 0.1);
+    border-color: var(--primary);
+}
+
+.v-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+/* Milestones Timeline */
+.timeline-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.timeline-items {
+    position: relative;
+    padding-left: 3rem;
+}
+
+.timeline-items::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary), var(--accent));
+    opacity: 0.3;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -3rem;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    background: var(--primary);
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item .year {
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.t-content h4 {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Practices Section */
+.practices-section {
+    background: linear-gradient(135deg, var(--bg-cream) 0%, #ffffff 100%);
+}
+
+.practices-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.practice-item {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    border-left: 5px solid var(--accent);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.practice-item:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-md);
+}
+
+.p-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.p-num {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary);
+    opacity: 0.1;
+    font-family: var(--font-serif);
+}
+
+.p-header h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+}
+
+/* Stats Counter Section */
+.stats-counter-section {
+    padding: 60px 0;
+    background: var(--primary);
+    color: var(--white);
+}
+
+.stats-counter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    text-align: center;
+}
+
+.stat-counter-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    font-family: var(--font-serif);
+    color: var(--accent); /* Vibrant Yellow Numbers */
+}
+
+.stat-label {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+/* Principal Section */
+.principal-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.principal-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.principal-text .signature {
+    margin-top: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.principal-text .signature span {
+    font-weight: 500;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Recruiters Section */
+.recruiters-section {
+    background: var(--bg-cream);
+    padding: 80px 0;
+}
+
+.recruiters-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    background: var(--white);
+    padding: 3rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+}
+
+.recruiters-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Vibrant Card Utilities */
+.card-vibrant-blue {
+    background: var(--primary) !important;
+    color: var(--white) !important;
+    border-bottom: 5px solid var(--accent);
+}
+
+.card-vibrant-teal {
+    background: #00A99D !important;
+    color: var(--white) !important;
+    border-bottom: 5px solid var(--accent);
+}
+
+.card-vibrant-charcoal {
+    background: #1A1A1A !important;
+    color: var(--white) !important;
+    border-bottom: 5px solid var(--accent);
+}
+
+.card-vibrant-blue p, .card-vibrant-teal p, .card-vibrant-charcoal p {
+    color: rgba(255,255,255,0.8);
+}
+
+.card-vibrant-blue h3, .card-vibrant-teal h3, .card-vibrant-charcoal h3 {
+    color: var(--white);
+}
+
+.card-vibrant-blue .testimonial-text, .card-vibrant-teal .testimonial-text, .card-vibrant-charcoal .testimonial-text {
+    color: var(--white);
+}
+
+.card-vibrant-blue .student-info strong, .card-vibrant-teal .student-info strong, .card-vibrant-charcoal .student-info strong {
+    color: var(--white);
+}
+
+.card-vibrant-blue .student-info span, .card-vibrant-teal .student-info span, .card-vibrant-charcoal .student-info span {
+    color: rgba(255,255,255,0.7);
+}
+
+.card-vibrant-blue::before, .card-vibrant-teal::before, .card-vibrant-charcoal::before {
+    color: var(--white) !important;
+    opacity: 0.2 !important;
+}
+
+/* Recruiter Marquee Animation */
+.recruiters-marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    padding: 3rem 0;
+    margin-top: 2rem;
+}
+
+.marquee-content {
+    display: inline-flex;
+    gap: 2.5rem;
+    animation: marquee 25s linear infinite;
+}
+
+.marquee-content:hover {
+    animation-play-state: paused;
+}
+
+.partner-card {
+    background: var(--white);
+    padding: 1.5rem 3rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.partner-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 1.25rem)); } 
+}
+
 @media (max-width: 1024px) {
+    .vision-grid, .timeline-container, .practices-grid { grid-template-columns: 1fr; gap: 3rem; }
     .display-text { font-size: 3.5rem; }
     .story-grid { grid-template-columns: 1fr; }
     .hero-visual { display: none; }
@@ -504,6 +1126,7 @@ section {
     .wide { grid-column: span 1; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .values-flex { flex-direction: column; }
+    .gallery-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
