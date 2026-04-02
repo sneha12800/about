@@ -2,23 +2,26 @@
     --primary: #253991; /* Tekkzy Royal Blue */
     --primary-dark: #1A286B;
     --secondary: #121212; /* Charcoal */
-    --accent: #FBBC05; /* Vibrant Yellow */
+    --accent: #FBB03B; /* Updated Vibrant Yellow from Image 4 */
     --accent-soft: rgba(251, 188, 5, 0.15);
-    --text-dark: #1A1A1A;
+    --text-dark: #111827;
     --text-light: #4B5563;
     --white: #ffffff;
-    --bg-light: #F9FAFB; 
+    --bg-light: #F9FAFB;
     --bg-cream: #FDF8EE; /* Warm Cream from reference */
     --footer-bg: #121212;
     --footer-text: #F3F4F6;
     --font-main: 'Outfit', sans-serif;
     --font-serif: 'Playfair Display', serif;
-    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --radius: 1rem;
+    --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --radius: 1.5rem;
+    --green: #006837; /* Forest Green from Image 3 */
+    --green-soft: rgba(0, 104, 55, 0.08);
 }
+
 
 * {
     margin: 0;
@@ -44,11 +47,15 @@ section {
     padding: 100px 0;
 }
 
-/* Typography */
+/* Typography Overhaul */
+h1, h2, h3, h4, .serif-title, .serif-heading-vibrant {
+    font-weight: 800; /* Ensuring headlines are bold as requested */
+}
+
 .serif-title {
     font-family: var(--font-serif);
-    font-size: 3.5rem;
-    font-weight: 700;
+    font-size: 4rem; /* Bigger font size */
+    font-weight: 900;
     line-height: 1.1;
     margin-bottom: 1.5rem;
 }
@@ -57,11 +64,12 @@ section {
 .serif-heading-vibrant {
     position: relative;
     display: inline-block;
-    padding-top: 2rem;
-    margin-bottom: 2rem;
+    padding-top: 2.5rem;
+    margin-bottom: 2.5rem;
     font-family: var(--font-serif);
-    font-size: 3.5rem;
-    font-weight: 700;
+    font-size: 3.8rem; /* Bigger title fonts */
+    font-weight: 900;
+    letter-spacing: -1px;
 }
 
 .section-header.center .serif-heading-vibrant::before {
@@ -444,10 +452,17 @@ section {
     gap: 2rem;
 }
 
+/* Values */
+.values-flex {
+    display: flex;
+    gap: 2rem;
+}
+
+/* Existing value-card (used elsewhere) */
 .value-card {
     flex: 1;
     padding: 3rem;
-    background: var(--bg-light);
+    background: var(--green-soft);
     border-radius: 24px;
     transition: var(--transition);
     border: 1px solid rgba(0,0,0,0.03);
@@ -457,6 +472,29 @@ section {
     background: var(--white);
     box-shadow: 0 20px 40px rgba(0,0,0,0.05);
     transform: translateY(-10px);
+}
+
+/* Consolidate: Value item styling moved to lines 889+ */
+
+
+.value-item-vibrant-green:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+.value-item-vibrant-green .icon-img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+/* Highlight word after Trident */
+.highlight-word {
+    color: var(--accent);
+    font-weight: 600;
 }
 
 .value-card .icon {
@@ -836,21 +874,88 @@ section {
     margin-bottom: 0.5rem;
 }
 
-/* Values New */
+
+/* Values Redesign - Modern Layered Cards */
 .values-cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
 }
 
-.value-item-new {
-    background: #f0f2f5;
-    padding: 2.5rem 2rem;
+.value-item-modern {
+    background: var(--white);
+    padding: 3.5rem 2.5rem;
     border-radius: var(--radius);
     text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     transition: var(--transition);
-    border: 1px solid rgba(0,0,0,0.03);
+    border-top: 5px solid var(--green); /* Default accent */
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.value-item-modern.yellow-accent {
+    border-top-color: var(--accent);
+}
+
+.value-item-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.02) 100%);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.value-item-modern:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 60px -12px rgba(0,0,0,0.12);
+}
+
+.value-item-modern:hover::before {
+    opacity: 1;
+}
+
+.value-item-modern .icon-img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 2rem;
+    padding: 1.2rem;
+    background: var(--bg-light);
+    border-radius: 20px;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    z-index: 1;
+}
+
+.value-item-modern:hover .icon-img {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+}
+
+.value-item-modern h4 {
+    color: var(--secondary);
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    font-family: var(--font-serif);
+    font-weight: 800;
+}
+
+.value-item-modern p {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 400;
 }
 
 .value-item-new:hover {
@@ -1049,23 +1154,105 @@ section {
     display: block;
 }
 
-/* Vibrant Card Utilities */
-.card-vibrant-blue {
-    background: var(--primary) !important;
+/* Vibrant Card Utilities - Using Brand Green & Brand Yellow */
+.card-vibrant-green {
+    background: var(--green) !important;
     color: var(--white) !important;
     border-bottom: 5px solid var(--accent);
 }
 
-.card-vibrant-teal {
-    background: #00A99D !important;
-    color: var(--white) !important;
-    border-bottom: 5px solid var(--accent);
+.card-vibrant-yellow {
+    background: var(--accent) !important;
+    color: var(--secondary) !important;
+    border-bottom: 5px solid var(--secondary);
 }
 
 .card-vibrant-charcoal {
-    background: #1A1A1A !important;
+    background: #111827 !important;
     color: var(--white) !important;
     border-bottom: 5px solid var(--accent);
+}
+
+.board-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    border: 4px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.governance-card:hover .board-img {
+    transform: scale(1.05);
+}
+
+.card-vibrant-yellow .board-img {
+    border-color: rgba(0,0,0,0.1);
+}
+
+/* High Impact Branded Cards - Force Visibility with higher specificity */
+.governance-card.card-vibrant-green h3, 
+.governance-card.card-vibrant-charcoal h3,
+.testimonial-card.card-vibrant-green h3 {
+    color: #ffffff !important;
+    font-size: 1.7rem !important;
+    font-weight: 800 !important;
+}
+
+.governance-card.card-vibrant-green .role, 
+.governance-card.card-vibrant-charcoal .role {
+    color: var(--accent) !important; /* Yellow role on dark bg */
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.95rem !important;
+}
+
+.governance-card.card-vibrant-green .desc, 
+.governance-card.card-vibrant-charcoal .desc {
+    color: rgba(255,255,255,0.95) !important;
+    font-weight: 500 !important;
+    font-size: 1.15rem !important;
+}
+
+/* Yellow Card Specifics - High legibility on bright backgrounds */
+.governance-card.card-vibrant-yellow h3 {
+    color: #000000 !important;
+    font-size: 1.7rem !important;
+    font-weight: 800 !important;
+}
+
+.governance-card.card-vibrant-yellow .role {
+    color: #1a202c !important; /* Dark charcoal role */
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.95rem !important;
+}
+
+.governance-card.card-vibrant-yellow .desc {
+    color: #000000 !important;
+    font-weight: 500 !important;
+    font-size: 1.15rem !important;
+}
+
+.card-vibrant-green p, .card-vibrant-charcoal p {
+    color: rgba(255,255,255,0.85);
+}
+
+.card-vibrant-yellow p {
+    color: rgba(0,0,0,0.7);
+    font-weight: 500;
+}
+
+.card-vibrant-green h3, .card-vibrant-charcoal h3, .card-vibrant-yellow h3 {
+    font-weight: 900;
+}
+
+.card-vibrant-yellow h3 {
+    color: var(--secondary);
 }
 
 .card-vibrant-blue p, .card-vibrant-teal p, .card-vibrant-charcoal p {
