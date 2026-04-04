@@ -45,8 +45,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const sectionElements = document.querySelectorAll('section[id]');
     const subLinks = document.querySelectorAll('.sub-links a');
 
-    // Custom reveal class handled in JS for simplicity
+    // Main Navbar & Sub-nav sticky logic
+    const mainNavbar = document.querySelector('.navbar');
+    
     window.addEventListener('scroll', () => {
+        // Main Navbar shrinking logic
+        if (window.scrollY > 100) {
+            mainNavbar.classList.add('sticky-active');
+        } else {
+            mainNavbar.classList.remove('sticky-active');
+        }
+
         // Sticky Sub-nav toggle
         if (window.scrollY > hero.offsetHeight - 100) {
             subNav.classList.add('sticky');

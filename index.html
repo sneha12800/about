@@ -6,40 +6,76 @@
     <title>About Us | Trident Academy of Technology</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700;800&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=student_portraits_v1">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="https://admissions-tat-tekkzy.netlify.app/logo.png" alt="Trident Logo" class="logo-img">
-            <span class="logo-text"><i>Trident</i></span>
+    <div class="top-header">
+        <div class="top-header-content">
+            <div class="top-info">
+                <span>AFFILIATED TO BPUT</span>
+                <span class="divider">|</span>
+                <span>NAAC 'A' ACCREDITED</span>
+            </div>
+            <div class="top-links">
+                <a href="#" class="alumni-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    ALUMNI
+                </a>
+            </div>
         </div>
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#" class="active">About</a></li>
-            <li><a href="#">Admissions</a></li>
-            <li><a href="#">Academics</a></li>
-            <li><a href="#">Research</a></li>
-            <li><a href="#">Campus Life</a></li>
-            <li><a href="#">Activities</a></li>
-            <li><a href="#" class="cta-nav">Contact Us</a></li>
-        </ul>
+    </div>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="https://admissions-tat-tekkzy.netlify.app/logo.png" alt="Trident Logo" class="logo-img">
+                <div class="logo-text-group">
+                    <span class="logo-brand">TRIDENT</span>
+                    <span class="logo-tagline">ACADEMY OF TECHNOLOGY</span>
+                </div>
+            </div>
+            
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="nav-menu">
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#" class="active">ABOUT</a></li>
+                    <li><a href="#">ADMISSIONS</a></li>
+                    <li><a href="#">ACADEMICS</a></li>
+                    <li><a href="#">RESEARCH</a></li>
+                    <li><a href="#">CAMPUS LIFE</a></li>
+                    <li><a href="#">ACTIVITIES</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-cta">
+                <a href="#" class="apply-btn">APPLY NOW</a>
+            </div>
+        </div>
     </nav>
 
     <header class="hero">
-        <div class="hero-bg-overlay"></div>
-        <div class="hero-content">
-            <h4 class="subtitle">ESTABLISHED 2005</h4>
-            <h1 class="display-text">A Legacy of <span class="accent italic">Excellence</span>,<br>A Future of Innovation.</h1>
-            <p class="hero-p">From a visionary coffee table discussion in 1991 to becoming a top-ranked pinnacle of technical education in Odisha.</p>
-            <div class="hero-btns">
-                <a href="#story" class="btn primary">Our Journey</a>
-                <a href="#stats" class="btn secondary">View Rankings</a>
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h4 class="subtitle">ABOUT TRIDENT</h4>
+                    <h1 class="display-text">A Legacy of <br><span class="accent italic">Excellence</span>,<br>A Future of Innovation.</h1>
+                    <p class="hero-p">From a visionary coffee table discussion in 1991 to becoming a top-ranked pinnacle of technical education in Odisha.</p>
+                    <div class="hero-btns">
+                        <a href="#story" class="btn primary">Our Journey</a>
+                        <a href="#stats" class="btn secondary">View Rankings</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-badge">ESTABLISHED 2005</div>
+                    <img src="hero_vibrant_campus_sunset_premium_1774683689660.png" alt="Trident Campus" class="hero-main-img">
+                </div>
             </div>
         </div>
 
@@ -383,7 +419,7 @@
                 <div class="testimonial-card card-vibrant-green">
                     <p class="testimonial-text">"Trident provided me with the perfect blend of technical rigor and creative freedom. The labs are truly world-class."</p>
                     <div class="student-info">
-                        <img src="https://i.pravatar.cc/150?u=1" alt="Student" class="student-img">
+                        <img src="student_rahul_sharma_cse_portrait_1775288690112.png" alt="Student" class="student-img">
                         <div class="details">
                             <strong>Rahul Sharma</strong>
                             <span>CSE, Batch of 2024</span>
@@ -393,7 +429,7 @@
                 <div class="testimonial-card card-vibrant-yellow">
                     <p class="testimonial-text">"The faculty mentorship here is unparalleled. I was able to publish two research papers before graduating."</p>
                     <div class="student-info">
-                        <img src="https://i.pravatar.cc/150?u=2" alt="Student" class="student-img">
+                        <img src="student_anjali_priya_etc_portrait_1775288708312.png" alt="Student" class="student-img">
                         <div class="details">
                             <strong>Anjali Priya</strong>
                             <span>ETC, Batch of 2023</span>

@@ -1,25 +1,27 @@
 :root {
-    --primary: #253991; /* Tekkzy Royal Blue */
+    --primary: #253386; /* Exact tat.tekkzy.com Navy */
     --primary-dark: #1A286B;
-    --secondary: #121212; /* Charcoal */
-    --accent: #FBB03B; /* Updated Vibrant Yellow from Image 4 */
+    --secondary: #3E3A36; /* Exact tat.tekkzy.com Charcoal */
+    --accent: #FBB03B; 
     --accent-soft: rgba(251, 188, 5, 0.15);
     --text-dark: #111827;
     --text-light: #4B5563;
     --white: #ffffff;
     --bg-light: #F9FAFB;
-    --bg-cream: #FDF8EE; /* Warm Cream from reference */
+    --bg-cream: #FDF8EE; 
     --footer-bg: #121212;
     --footer-text: #F3F4F6;
     --font-main: 'Outfit', sans-serif;
     --font-serif: 'Playfair Display', serif;
-    --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     --radius: 1.5rem;
-    --green: #006837; /* Forest Green from Image 3 */
-    --green-soft: rgba(0, 104, 55, 0.08);
+    --green: #006837; 
+    --green-soft: rgba(0, 104, 0.08);
+    --container-max: 1440px; /* Reference Width */
+    --container-px: 3rem; /* Institutional Spine Standard (48px) */
 }
 
 
@@ -38,9 +40,9 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 var(--container-px);
 }
 
 section {
@@ -84,7 +86,7 @@ h1, h2, h3, h4, .serif-title, .serif-heading-vibrant {
     left: 0;
     width: 80px;
     height: 4px;
-    background: var(--primary);
+    background: #111827;
 }
 
 .serif-heading-vibrant .highlight-box {
@@ -106,7 +108,7 @@ h1, h2, h3, h4, .serif-title, .serif-heading-vibrant {
 
 .serif-heading-vibrant .accent-italic {
     font-style: italic;
-    color: var(--primary);
+    color: #111827;
 }
 
 .serif-title.white,
@@ -131,18 +133,205 @@ h1, h2, h3, h4, .serif-title, .serif-heading-vibrant {
 
 .subtitle.gold { color: var(--accent); }
 
-/* Navbar */
+/* Multi-Tier Header System - Institutional Spine Precision */
+.top-header {
+    background: var(--primary); 
+    color: rgba(255, 255, 255, 0.9);
+    height: 36px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+    width: 100% !important;
+    position: relative;
+    z-index: 1001;
+}
+
+.top-header-content {
+    max-width: var(--container-max);
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 202px 0 114px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 100% !important;
+}
+
+.top-info {
+    display: flex !important;
+    gap: 1.5rem !important;
+    align-items: center !important;
+}
+
+.top-links {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.top-info .divider {
+    opacity: 0.3;
+}
+
+.top-links .alumni-link {
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.top-links .alumni-link:hover {
+    opacity: 0.8;
+}
+
 .navbar {
     position: sticky;
     top: 0;
     width: 100%;
-    padding: 1.2rem 4rem;
+    background: var(--white);
+    z-index: 1001;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.navbar.sticky-active {
+    height: 80px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.navbar-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1001;
-    background: var(--white);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    gap: 0;
+}
+
+/* Institutional Logo Layout - Synchronized Axis */
+.logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo-img {
+    height: 52px;
+    position: absolute;
+    left: -68px; /* Shifts crest icon left of the 48px baseline axis */
+}
+
+.logo-text-group {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-brand {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #1A1A1A;
+    line-height: 1;
+}
+
+.logo-tagline {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #4A90E2; /* Subtle lighter blue tagline */
+    text-transform: uppercase;
+}
+
+/* Precise Navigation Positioning - Synchronized with Reference */
+.nav-menu {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 5rem; /* Gap to shift ABOUT start point to approx 255px */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem; /* Denser link grouping for institutional prestige */
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #3E3A36;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    transition: var(--transition);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--primary);
+    transition: var(--transition);
+}
+
+.nav-links li a.active::after {
+    width: 100%;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+    color: #1A1A1A;
+}
+
+/* Apply Now CTA - Pixel Perfect Match */
+.nav-cta {
+    flex-shrink: 0;
+    margin-left: 5rem;
+}
+
+.apply-btn {
+    background: #253386;
+    color: var(--white);
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+    display: inline-block;
+}
+
+.apply-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.apply-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(45, 62, 139, 0.4);
+    background: #1e293b;
 }
 
 /* Hamburger Button */
@@ -166,57 +355,6 @@ h1, h2, h3, h4, .serif-title, .serif-heading-vibrant {
     border-radius: 4px;
     transition: var(--transition);
     transform-origin: center;
-}
-
-.hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.logo-img {
-    height: 40px;
-}
-
-.logo-text {
-    font-family: var(--font-serif);
-    font-size: 1.6rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    color: var(--secondary);
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    align-items: center;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--secondary);
-    font-weight: 500;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: var(--transition);
-}
-
-.nav-links a:hover, .nav-links a.active {
-    color: var(--primary);
-}
-
-.cta-nav {
-    background: var(--secondary);
-    color: var(--white) !important;
-    padding: 0.7rem 1.5rem;
-    border-radius: 6px; /* Matching Academic rounded-xl style */
-    font-weight: 700;
 }
 
 /* Sub-Nav */
@@ -279,46 +417,65 @@ h1, h2, h3, h4, .serif-title, .serif-heading-vibrant {
 
 /* Hero */
 .hero {
-    height: 100vh;
-    background: url('hero_vibrant_campus_sunset_premium_1774683689660.png') center/cover;
-    display: flex;
-    align-items: center;
-    padding: 0 4rem;
+    min-height: 85vh;
+    padding: 100px 0;
     position: relative;
-    overflow: hidden;
+    background: var(--bg-cream); /* Reference uses a cream background for the hero area */
 }
 
-.hero-bg-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, var(--bg-light) 30%, rgba(252, 248, 245, 0.4) 100%);
-    z-index: 1;
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 100px;
+    align-items: center;
 }
 
-.hero-content {
-    max-width: 700px;
+.hero-text {
     z-index: 2;
 }
 
 .display-text {
     font-family: var(--font-serif);
-    font-size: 4.5rem;
-    font-weight: 700;
+    font-size: 4.8rem; /* Premium weight */
+    font-weight: 800;
     line-height: 1.1;
-    color: var(--secondary);
-    margin-bottom: 2rem;
+    color: #111827;
+    margin-bottom: 2.5rem;
 }
 
-.accent { color: var(--primary); }
+.accent { color: var(--accent); } /* Yellow Accent for "Excellence" */
 
 .hero-p {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     color: var(--text-light);
-    margin-bottom: 3rem;
-    max-width: 600px;
+    margin-bottom: 4rem;
+    max-width: 650px;
+    line-height: 1.8;
+}
+
+.hero-visual {
+    position: relative;
+}
+
+.hero-main-img {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: var(--shadow-lg);
+}
+
+.hero-badge {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    background: var(--accent);
+    color: var(--primary);
+    padding: 1rem 1.5rem;
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    box-shadow: var(--shadow-md);
 }
 
 .hero-btns {
@@ -338,7 +495,7 @@ h1, h2, h3, h4, .serif-title, .serif-heading-vibrant {
 }
 
 .btn.primary {
-    background: var(--primary);
+    background: var(--green);
     color: var(--white);
 }
 
@@ -1335,13 +1492,12 @@ h1, h2, h3, h4, .serif-title, .serif-heading-vibrant {
    RESPONSIVE – TABLET (≤1024px)
    ============================================ */
 @media (max-width: 1024px) {
-    .navbar { padding: 1rem 2rem; }
-
-    .vision-grid,
-    .timeline-container,
-    .practices-grid,
-    .compliance-flex,
-    .principal-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .top-header { display: none; }
+    .navbar { padding: 0.5rem 0; }
+    .navbar-container { padding: 0 2rem; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.75rem; }
+    .apply-btn { padding: 0.8rem 1.5rem; font-size: 0.8rem; }
 
     .display-text { font-size: 3.5rem; }
     .serif-title,
@@ -1366,8 +1522,15 @@ h1, h2, h3, h4, .serif-title, .serif-heading-vibrant {
 @media (max-width: 768px) {
     /* --- Navbar & Hamburger --- */
     .navbar {
-        padding: 1rem 1.5rem;
-        position: sticky;
+        padding: 0.6rem 0;
+    }
+
+    .navbar-container {
+        padding: 0 1.5rem;
+    }
+
+    .nav-menu, .nav-cta {
+        display: none;
     }
 
     .hamburger { display: flex; }
@@ -1383,7 +1546,7 @@ h1, h2, h3, h4, .serif-title, .serif-heading-vibrant {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 2.5rem;
+        gap: 2rem;
         z-index: 1001;
         padding: 2rem;
         animation: fadeInMenu 0.3s ease;
