@@ -1,22 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Hamburger Menu ---
-    const hamburger = document.getElementById('hamburger');
-    const navLinks  = document.getElementById('nav-links');
+    // --- New Header Logic ---
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
 
-    hamburger.addEventListener('click', () => {
-        const isOpen = navLinks.classList.toggle('open');
-        hamburger.classList.toggle('open', isOpen);
-        hamburger.setAttribute('aria-expanded', isOpen);
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
+    const toggleMobileMenu = () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        if (isOpen) {
+            menuIcon.style.display = 'none';
+            closeIcon.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        } else {
+            menuIcon.style.display = 'block';
+            closeIcon.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    };
+
+    if(mobileToggle) mobileToggle.addEventListener('click', toggleMobileMenu);
 
     // Close menu when any nav link is clicked
-    navLinks.querySelectorAll('a').forEach(link => {
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
         link.addEventListener('click', () => {
-            navLinks.classList.remove('open');
-            hamburger.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
+            if(mobileMenu.classList.contains('open')) toggleMobileMenu();
         });
     });
 
@@ -46,16 +53,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const subLinks = document.querySelectorAll('.sub-links a');
 
     // Main Navbar & Sub-nav sticky logic
-    const mainNavbar = document.querySelector('.navbar');
+    const utilityBar = document.getElementById('utility-bar');
+    const mainHeader = document.getElementById('main-header');
     
     window.addEventListener('scroll', () => {
-        // Main Navbar shrinking logic
-        if (window.scrollY > 100) {
-            mainNavbar.classList.add('sticky-active');
+        // New Header scroll logic
+        const isScrolled = window.scrollY > 50;
+        if (isScrolled) {
+            if(utilityBar) utilityBar.classList.add('scrolled');
+            if(mainHeader) mainHeader.classList.add('scrolled');
         } else {
-            mainNavbar.classList.remove('sticky-active');
+            if(utilityBar) utilityBar.classList.remove('scrolled');
+            if(mainHeader) mainHeader.classList.remove('scrolled');
         }
-
         // Sticky Sub-nav toggle
         if (window.scrollY > hero.offsetHeight - 100) {
             subNav.classList.add('sticky');
