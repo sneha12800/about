@@ -84,7 +84,12 @@ const Header = () => {
                 <li key={link.name}>
                   <a 
                     href={link.href} 
-                    className="text-sm font-extrabold text-brand-secondary uppercase tracking-[0.14em] hover:text-brand-primary transition-colors whitespace-nowrap"
+                    className={cn(
+                      "text-sm font-extrabold uppercase tracking-[0.14em] transition-all duration-300 relative py-1",
+                      link.name === 'About' 
+                        ? "text-brand-primary border-b-2 border-brand-primary" 
+                        : "text-brand-secondary hover:text-brand-primary"
+                    )}
                   >
                     {link.name}
                   </a>

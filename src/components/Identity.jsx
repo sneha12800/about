@@ -24,8 +24,28 @@ const ValueItem = ({ icon: Icon, title, desc, accent = false }) => (
 
 const Identity = () => {
   return (
-    <section id="identity" className="py-24 bg-brand-cream/50 relative overflow-hidden">
-      <div className="container-custom">
+    <section id="identity" className="py-24 bg-brand-cream/30 relative overflow-hidden">
+      {/* Background Motifs */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] opacity-[0.03] select-none">
+          <Lightbulb size={800} strokeWidth={0.5} className="text-brand-primary" />
+        </div>
+        
+        {/* Soft Spirit Blurs */}
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-brand-accent/15 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-brand-green/10 rounded-full blur-[120px]" />
+        
+        {/* Decorative Grid Trace */}
+        <div 
+          className="absolute left-0 bottom-0 w-full h-1/2 opacity-[0.04]"
+          style={{ 
+            backgroundImage: `radial-gradient(#253386 1px, transparent 1px)`,
+            backgroundSize: '30px 30px' 
+          }}
+        />
+      </div>
+
+      <div className="container-custom relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-center mb-24">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}

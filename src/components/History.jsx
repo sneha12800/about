@@ -31,8 +31,36 @@ const History = () => {
   ];
 
   return (
-    <section id="milestones" className="py-24 bg-white overflow-hidden">
-      <div className="container-custom">
+    <section id="milestones" className="py-24 bg-white relative overflow-hidden">
+      {/* Background Motifs */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-10 left-10 text-[20vw] font-black text-brand-primary/5 select-none leading-none">
+          1991
+        </div>
+        
+        {/* Architectural Grid Design */}
+        <div 
+          className="absolute inset-0 opacity-[0.03]"
+          style={{ 
+            backgroundImage: `linear-gradient(#253386 1px, transparent 1px), linear-gradient(to right, #253386 1px, transparent 1px)`,
+            backgroundSize: '80px 80px' 
+          }}
+        />
+        
+        <div 
+          className="absolute inset-0 opacity-[0.02]"
+          style={{ 
+            backgroundImage: `linear-gradient(#253386 1px, transparent 1px), linear-gradient(to right, #253386 1px, transparent 1px)`,
+            backgroundSize: '20px 20px' 
+          }}
+        />
+
+        {/* Soft History Blurs */}
+        <div className="absolute top-1/2 right-[-10%] w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-brand-accent/10 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="container-custom relative z-10">
         <div className="text-center mb-20 section-header-center">
           <span className="text-sm font-bold tracking-[3px] text-slate-400 uppercase mb-4 block">TIMELINE</span>
           <h2 className="serif-heading-vibrant">
