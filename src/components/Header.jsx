@@ -20,13 +20,13 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '#' },
-    { name: 'Admissions', href: '#' },
-    { name: 'Academics', href: '#' },
-    { name: 'Research', href: '#' },
-    { name: 'Campus Life', href: '#' },
-    { name: 'Activities', href: '#' },
-    { name: 'Contact Us', href: '#' },
+    { name: 'About', href: 'https://about-tat.tekkzy.com/' },
+    { name: 'Admissions', href: 'https://admissions-tat.tekkzy.com/' },
+    { name: 'Academics', href: 'https://academics-tat.tekkzy.com/' },
+    { name: 'Research', href: 'https://research-tat.tekkzy.com/' },
+    { name: 'Campus Life', href: 'https://campuslife-tat.tekkzy.com/' },
+    { name: 'Activities', href: 'https://activities-tat.tekkzy.com/' },
+    { name: 'Contact Us', href: 'https://contactus-tat.tekkzy.com/' },
   ];
 
   return (
@@ -101,7 +101,7 @@ const Header = () => {
           {/* CTA */}
           <div className="hidden lg:flex items-center">
             <a 
-              href="/apply" 
+              href="https://apply-now.tekkzy.com/" 
               className="bg-[#E63946] hover:bg-[#c92f3a] text-white text-[12px] font-bold px-7 py-3 rounded uppercase transition-colors"
             >
               Apply Now
@@ -147,7 +147,7 @@ const Header = () => {
               style={{ transitionDelay: '430ms' }}
             >
               <a 
-                href="/apply" 
+                href="https://apply-now.tekkzy.com/" 
                 className="block text-center bg-[#E63946] text-white text-sm font-extrabold py-4 rounded-xl shadow-[0_10px_30px_-10px_rgba(230,57,70,0.5)] uppercase tracking-wider"
               >
                 Start Application

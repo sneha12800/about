@@ -90,31 +90,44 @@ const Footer = () => {
           {[
             {
               title: "Academics",
+              url: "https://academics-tat.tekkzy.com/",
               links: ["Undergraduate Studies", "Postgraduate Studies", "Doctoral Programs", "Research Centers", "Academic Calendar"]
             },
             {
               title: "Campus Life",
+              url: "https://campuslife-tat.tekkzy.com/",
               links: ["Student Hostels", "Clubs & Societies", "Sports & Recreation", "Health & Wellness", "Campus Safety"]
             },
             {
               title: "Resources",
-              links: ["Admissions Portal", "Alumni Network", "Career Placements", "NIRF Data", "Tenders & Notices"]
+              url: "https://about-tat.tekkzy.com/",
+              links: [
+                { name: "Admissions Portal", href: "https://admissions-tat.tekkzy.com/" },
+                { name: "Alumni Network", href: "https://alumni-tat.tekkzy.com/" },
+                { name: "Career Placements", href: "#" },
+                { name: "NIRF Data", href: "#" },
+                { name: "Tenders & Notices", href: "#" }
+              ]
             }
           ].map((col, i) => (
             <div key={i}>
               <h5 className="text-xl font-black uppercase tracking-tighter mb-8 flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-brand-accent" />
-                {col.title}
+                <a href={col.url} className="hover:text-brand-accent transition-colors">{col.title}</a>
               </h5>
               <ul className="space-y-4">
-                {col.links.map(link => (
-                  <li key={link}>
-                    <a href="#" className="text-slate-400 font-semibold hover:text-brand-accent transition-colors flex items-center gap-2 group">
-                      <div className="w-0 h-0.5 bg-brand-accent group-hover:w-3 transition-all duration-300" />
-                      {link}
-                    </a>
-                  </li>
-                ))}
+                {col.links.map(link => {
+                  const name = typeof link === 'string' ? link : link.name;
+                  const href = typeof link === 'string' ? "#" : link.href;
+                  return (
+                    <li key={name}>
+                      <a href={href} className="text-slate-400 font-semibold hover:text-brand-accent transition-colors flex items-center gap-2 group">
+                        <div className="w-0 h-0.5 bg-brand-accent group-hover:w-3 transition-all duration-300" />
+                        {name}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
