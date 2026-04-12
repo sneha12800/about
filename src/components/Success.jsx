@@ -31,7 +31,7 @@ const TestimonialCard = ({ quote, img, name, detail, color }) => {
 
 const Success = () => {
   return (
-    <section id="success" className="py-24 bg-brand-cream/40 overflow-hidden">
+    <section id="success" className="pt-36 pb-24 bg-brand-cream/40 overflow-hidden">
       <div className="container-custom">
         <div className="text-center mb-20 section-header-center">
           <span className="text-sm font-bold tracking-[3px] text-slate-400 uppercase mb-4 block">STUDENT SUCCESS</span>
@@ -43,14 +43,14 @@ const Success = () => {
         <div className="grid md:grid-cols-2 gap-10">
           <TestimonialCard 
             quote="Trident provided me with the perfect blend of technical rigor and creative freedom. The labs are truly world-class."
-            img="student_rahul_sharma_cse_portrait_1775288690112.png"
+            img="/student_rahul_sharma_cse_portrait_1775288690112.png"
             name="Rahul Sharma"
             detail="CSE, Batch of 2024"
             color="green"
           />
           <TestimonialCard 
             quote="The faculty mentorship here is unparalleled. I was able to publish two research papers before graduating."
-            img="student_anjali_priya_etc_portrait_1775288708312.png"
+            img="/student_anjali_priya_etc_portrait_1775288708312.png"
             name="Anjali Priya"
             detail="ETC, Batch of 2023"
             color="yellow"

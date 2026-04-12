@@ -1,30 +1,51 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Hero = () => {
-  return (
-    <section className="relative min-h-[95vh] flex items-center pt-32 pb-20 overflow-hidden bg-white">
-      {/* Background Layer Group */}
-      <div className="absolute inset-0 z-0">
-        {/* Main Campus Image */}
-        <img 
-          src="hero_vibrant_campus_sunset_premium_1774683689660.png" 
-          alt="Trident Campus" 
-          className="w-full h-full object-cover opacity-[0.55]" 
-        />
-        
-        {/* Institutional Blue Overlay Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-transparent z-10" />
-        <div className="absolute inset-0 bg-brand-primary/10 z-10" />
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-        {/* Technological Grid Pattern Design */}
-        <div 
-          className="absolute right-0 top-0 w-1/2 h-full opacity-[0.12] z-20 pointer-events-none"
-          style={{ 
-            backgroundImage: `linear-gradient(to right, #253386 1px, transparent 1px), linear-gradient(to bottom, #253386 1px, transparent 1px)`,
-            backgroundSize: '40px 40px' 
-          }}
-        />
+  const images = [
+    "/hero_vibrant_campus_sunset_premium_1774683689660.png",
+    "/hero_campus_realistic_daytime_1774671873536.png",
+    "/campus_hero_modern_1774668970671.png",
+    "/student_tech_lab_1774668989975.png",
+    "/vision_vibrant_colorful_students_1774672909834.png"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="relative min-h-[95vh] flex items-center pt-64 pb-24 overflow-hidden bg-white">
+      {/* Background Layer Group */}
+      <div className="absolute inset-0 z-0 bg-black">
+        {/* Dynamic Background Slideshow (All images rendered to prevent network load flashes) */}
+        {images.map((imgSrc, index) => {
+          const isCurrent = currentImageIndex === index;
+          const isPrevious = index === (currentImageIndex - 1 + images.length) % images.length;
+          
+          return (
+            <motion.img 
+              key={imgSrc}
+              src={imgSrc}
+              alt={`Trident Campus Slide ${index + 1}`} 
+              initial={{ opacity: index === 0 ? 1 : 0 }}
+              animate={{ opacity: isCurrent || isPrevious ? 1 : 0 }}
+              style={{ zIndex: isCurrent ? 2 : isPrevious ? 1 : 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover" 
+            />
+          );
+        })}
+
+        {/* Dark Aesthetic Overlay to deepen the mood and make text pop */}
+        <div className="absolute inset-0 bg-slate-950/60 z-10" />
+
+
 
         {/* Large Decorative Watermark */}
         <div className="absolute -left-20 -bottom-20 w-[600px] h-[600px] opacity-[0.06] z-20 pointer-events-none select-none">
@@ -48,40 +69,40 @@ const Hero = () => {
             transition={{ duration: 0.8, ease: [0.165, 0.84, 0.44, 1] }}
             className="flex flex-col"
           >
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-4 mb-8 text-white/90 drop-shadow-md">
               <div className="flex items-center">
-                <span className="h-[3px] w-12 bg-brand-primary" />
-                <span className="h-[8px] w-[8px] rounded-full bg-brand-primary ml-[-4px]" />
+                <span className="h-[3px] w-12 bg-white/60" />
+                <span className="h-[8px] w-[8px] rounded-full bg-white/80 ml-[-4px]" />
               </div>
-              <span className="text-[13px] font-black tracking-[5px] text-brand-primary/80 uppercase">
+              <span className="text-[13px] font-black tracking-[5px] uppercase">
                 ABOUT TRIDENT ACADEMY
               </span>
             </div>
             
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 leading-[1.05] mb-8 drop-shadow-sm">
+            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] mb-8 drop-shadow-2xl">
               A Legacy of <br />
-              <span className="text-brand-accent italic drop-shadow-[0_2px_8px_rgba(251,176,59,0.2)]">Excellence</span>,<br />
+              <span className="text-brand-accent italic drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">Excellence</span>,<br />
               A Future of Innovation.
             </h1>
             
-            <p className="text-lg md:text-xl text-slate-700 leading-relaxed max-w-2xl mb-12 font-bold border-l-4 border-brand-primary/10 pl-6">
+            <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mb-12 font-bold border-l-4 border-brand-accent pl-6 drop-shadow-xl">
               From a visionary coffee table discussion in 1991 to becoming a top-ranked pinnacle of technical education in Odisha.
             </p>
             
             <div className="flex flex-wrap gap-8 items-center">
               <a 
                 href="#story" 
-                className="bg-brand-primary hover:bg-brand-primary-dark text-white font-black px-12 py-5 rounded-md uppercase text-[14px] tracking-wider transition-all hover:-translate-y-1 shadow-2xl shadow-brand-primary/30 active:scale-95"
+                className="bg-brand-accent hover:bg-yellow-400 text-slate-900 font-black px-12 py-5 rounded-md uppercase text-[14px] tracking-wider transition-all hover:-translate-y-1 shadow-2xl shadow-brand-accent/30 active:scale-95"
               >
                 Our Journey
               </a>
               <a 
                 href="#stats" 
-                className="group flex items-center gap-4 text-brand-primary font-black uppercase text-[14px] tracking-wider hover:text-brand-primary-dark transition-all"
+                className="group flex items-center gap-4 text-white font-black uppercase text-[14px] tracking-wider hover:text-white/80 transition-all drop-shadow-md"
               >
                 <div className="relative flex items-center">
-                  <div className="w-14 h-[3px] bg-brand-primary/10 group-hover:w-16 group-hover:bg-brand-primary transition-all duration-300" />
-                  <div className="absolute right-0 w-2 h-2 rounded-full bg-brand-primary/20 group-hover:bg-brand-primary opacity-0 group-hover:opacity-100 transition-all" />
+                  <div className="w-14 h-[3px] bg-white/40 group-hover:w-16 group-hover:bg-brand-accent transition-all duration-300" />
+                  <div className="absolute right-0 w-2 h-2 rounded-full bg-white/60 group-hover:bg-brand-accent opacity-0 group-hover:opacity-100 transition-all" />
                 </div>
                 View Rankings
               </a>

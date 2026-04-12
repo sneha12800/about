@@ -24,7 +24,7 @@ const ValueItem = ({ icon: Icon, title, desc, accent = false }) => (
 
 const Identity = () => {
   return (
-    <section id="identity" className="py-24 bg-brand-cream/30 relative overflow-hidden">
+    <section id="identity" className="pt-36 pb-24 bg-brand-cream/30 relative overflow-hidden">
       {/* Background Motifs */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] opacity-[0.03] select-none">
@@ -56,7 +56,7 @@ const Identity = () => {
           >
             <div className="rounded-[40px] overflow-hidden shadow-2xl relative z-10">
               <img 
-                src="vision_vibrant_colorful_students_1774672909834.png" 
+                src="/vision_vibrant_colorful_students_1774672909834.png" 
                 alt="Institutional Vision" 
                 className="w-full h-[500px] object-cover" 
               />

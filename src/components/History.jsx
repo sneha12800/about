@@ -31,7 +31,7 @@ const History = () => {
   ];
 
   return (
-    <section id="milestones" className="py-24 bg-white relative overflow-hidden">
+    <section id="milestones" className="pt-36 pb-24 bg-white relative overflow-hidden">
       {/* Background Motifs */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-10 left-10 text-[20vw] font-black text-brand-primary/5 select-none leading-none">
@@ -78,7 +78,7 @@ const History = () => {
           >
             <div className="rounded-3xl overflow-hidden shadow-2xl relative z-10 border-8 border-slate-50">
               <img 
-                src="milestones_vibrant_timeline_nodes_1774672926576.png" 
+                src="/milestones_vibrant_timeline_nodes_1774672926576.png" 
                 alt="Timeline Visual" 
                 className="w-full h-[600px] object-cover" 
               />
@@ -119,7 +119,7 @@ const History = () => {
           >
             <div className="rounded-[40px] overflow-hidden shadow-2xl skew-y-1">
               <img 
-                src="visionary_meeting_journey_1774669005557.png" 
+                src="/visionary_meeting_journey_1774669005557.png" 
                 alt="Founding Vision" 
                 className="w-full h-[450px] object-cover" 
               />

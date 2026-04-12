@@ -29,22 +29,26 @@ const Leadership = () => {
     <section id="leadership" className="py-24 bg-white overflow-hidden">
       <div className="container-custom">
         {/* Principal Message */}
-        <div id="principal" className="grid lg:grid-cols-2 gap-20 items-center mb-32">
+        <div id="principal" className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center mb-32">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative lg:ml-auto lg:mr-0 w-full group"
           >
-            <div className="rounded-[40px] overflow-hidden shadow-2xl relative z-10 border-8 border-slate-50">
+            {/* Formal Architectural Frame Accent */}
+            <div className="absolute -top-4 -left-4 w-full h-full border border-brand-primary/20 rounded-md -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
+            
+            {/* Professional Portrait Container */}
+            <div className="rounded-md overflow-hidden shadow-2xl shadow-brand-primary/10 relative z-10 bg-white ring-1 ring-slate-900/5">
               <img 
-                src="principal_portrait_vibrant_professorial_1774675617669.png" 
-                alt="Principal" 
-                className="w-full h-[550px] object-cover" 
+                src="https://tat.ac.in/wp-content/uploads/2026/02/Passport_Size_Photo_Final.png" 
+                alt="Prof. (Dr) D. N. Pattanayak" 
+                className="w-full h-[550px] object-cover hover:scale-105 transition-transform duration-700 ease-out" 
+                style={{ objectPosition: 'center 20%' }}
               />
             </div>
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-brand-green opacity-10 rounded-full blur-3xl -z-10" />
           </motion.div>
 
           <motion.div 
@@ -78,21 +82,21 @@ const Leadership = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           <BoardCard 
-            img="chairperson_panigrahi_1775112672468.png"
+            img="/chairperson_panigrahi_1775112672468.png"
             name="Smt. S. Panigrahi"
             role="Chairperson"
             desc="Trustee – D. Foundation"
             color="green"
           />
           <BoardCard 
-            img="member_nanda_portrait_1775112695824.png"
+            img="/member_nanda_portrait_1775112695824.png"
             name="Dr. B. K. Nanda"
             role="Member"
             desc="Ex-Vice Chancellor, VSSUT, Burla (Ph.D, Mechanical)"
             color="yellow"
           />
           <BoardCard 
-            img="principal_pattanayak_portrait_1775112712100.png"
+            img="https://tat.ac.in/wp-content/uploads/2026/02/Passport_Size_Photo_Final.png"
             name="Prof. (Dr) D. N. Pattanayak"
             role="Member Secretary (GB)"
             desc="Principal (Ph.D, JU, Electrical Engg)"

@@ -42,7 +42,7 @@ const StatsCounter = () => {
   ];
 
   return (
-    <section id="stats-counter" className="py-24 bg-slate-900 border-y border-white/5 overflow-hidden">
+    <section id="stats-counter" className="pt-36 pb-24 bg-slate-900 border-y border-white/5 overflow-hidden">
       <div className="container-custom">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, i) => (

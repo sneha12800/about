@@ -32,7 +32,7 @@ const DocItem = ({ icon: Icon, title, links }) => (
 
 const Compliance = () => {
   return (
-    <section id="compliance" className="py-24 bg-slate-50 overflow-hidden">
+    <section id="compliance" className="pt-36 pb-24 bg-slate-50 overflow-hidden">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <motion.div 
